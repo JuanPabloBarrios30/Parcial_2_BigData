@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
  build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -39,11 +39,6 @@ jobs:
           flake8 News_to_csv.py
           flake8 News.py
           
-      - name: Execute unit test
-        run: | 
-          source env/bin/activate
-          pytest
-          
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -51,4 +46,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN}}
           aws-region: us-east-1
+          
+      - name: Execute unit test
+        run: | 
+          source env/bin/activate
+          pytest
           
