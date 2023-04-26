@@ -1,6 +1,3 @@
-import csv
-import requests
-from datetime import date
 from bs4 import BeautifulSoup
 from News_to_csv import get_link_ee, get_link_et
 
@@ -53,11 +50,10 @@ def test_get_link_et():
 
     assert get_link_et(links) == text_response
 
+
 def test_get_link_ee():
 
     soup = BeautifulSoup(html_espectador, "html.parser")
     links = soup.find_all('a')[0]
-    
-    assert get_link_ee(links) == text_response_2
 
-    
+    assert get_link_ee(links) == text_response_2
