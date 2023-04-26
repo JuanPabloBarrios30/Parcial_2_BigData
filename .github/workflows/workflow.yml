@@ -51,4 +51,9 @@ jobs:
         run: | 
           source env/bin/activate
           pytest
+      - name: Update code
+        run: |
+          source env/bin/activate
+          aws s3 cp News.py s3://aws-glue-assets-361049104817-us-east-1/scripts/
+
           
